@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="Container">
+        <div id="row1">
+            <input type="text">
+        </div>
+        <div id="row2">
+            <button><h3>1</h3></button>
+            <button><h3>2</h3></button>
+            <button><h3>3</h3></button>
+            <button><h3>+</h3></button>
+        </div>
+        <div id="row3">
+            <button><h3>4</h3></button>
+            <button><h3>5</h3></button>
+            <button><h3>6</h3></button>
+            <button><h3>-</h3></button>
+        </div>
+        <div id="row4">
+            <button><h3>7</h3></button>
+            <button><h3>8</h3></button>
+            <button><h3>9</h3></button>
+            <button><h3>*</h3></button>
+        </div>
+        <div id="row5">
+            <button><h3>0</h3></button>
+            <button><h3>.</h3></button>
+            <button style="background-color: rgb(218, 162, 162);box-shadow:2px 3px 4px rgb(215, 102, 54) ;" id="c"><h3>C</h3></button>
+            <button><h3>/</h3></button>
+        </div>
+        <div id="row6">
+            <button style="width: 275px;height: 60px;"><h3>=</h3></button>
+            <button style="height: 60px;"><h3>%</h3></button>
+        </div>
+
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputField = document.querySelector("input");
+        const buttons = document.querySelectorAll("button");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                const value = button.innerText;
+
+                if (value === "=") {
+                    try {
+                        inputField.value = eval(inputField.value);
+                    } catch (e) {
+                        inputField.value = "Error";
+                    }
+                } else if (value === "C") {
+                    inputField.value = "";
+                } else {
+                    inputField.value += value;
+                }
+            });
+        });
+    });
+</script>
+
+
+</html>
